@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+        <button type="button" onclick = "requestFullScreen()">Click Me for Fullscreen</button>
+        
+        <audio hidden="yes" id="youtube" autoplay controls loop></audio>
+        <script src="assets/js/player.js"></script></body>
+       
+        <script type="text/javascript">
+            function requestFullScreen(element) {
+                var element = document.body; 
+                var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+                if (requestMethod) { // Native full screen.
+                    requestMethod.call(element);
+                } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+            }
+
+        </script> 
+        
+
+  </body>
+</html>
